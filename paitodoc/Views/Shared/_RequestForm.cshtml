@@ -1,0 +1,35 @@
+@model PatientViewModel
+
+<form asp-action="RequestAppointment" id="form-action" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            @* <label asp-for="Todo.Name" class="form-label"></label>
+            <input asp-for="Todo.Id" type="hidden" class="form-control" /> *@
+            <label asp-for="aRequest.DocName" class="form-label"></label>
+            <input asp-for="aRequest.DocName" class="form-control" />
+             <label asp-for="aRequest.DocEmail" class="form-label"></label>
+            <input asp-for="aRequest.DocEmail" class="form-control" />
+            <label asp-for="aRequest.PatientName" class="form-label"></label>
+            <input asp-for="aRequest.PatientName" class="form-control" />
+            <label asp-for="aRequest.PatientEmail" class="form-label"></label>
+            <input asp-for="aRequest.PatientEmail" class="form-control" />
+             <label asp-for="aRequest.Date" class="form-label"></label>
+            <input asp-for="aRequest.Date" class="form-control" placeholder="mm/dd/yyyy"/>
+            <label asp-for="aRequest.Time" class="form-label"></label>
+            <input asp-for="aRequest.Time" class="form-control" placeholder="12:00pm" />
+           
+
+            <span asp-validation-for="aRequest" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10 mt-3 mb-5">
+            <input type="submit" id="form-button" class="btn btn-success" value="Request Appointment" />
+        </div>
+    </div>
+ @* <div>
+        @Html.ActionLink("Already have an account, Login ", "Login", "Login", routeValues: null, htmlAttributes: new { @class = "btn-Success" })
+    </div> *@
+</form>

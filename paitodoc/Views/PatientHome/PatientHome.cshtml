@@ -1,0 +1,132 @@
+@model PatientViewModel
+
+
+
+<div class="row justify-content-center">
+    <h1>REQUEST AN APPOINTMENT</h1>
+    <div class="container">   
+        @Html.Partial("_RequestForm")
+    </div>    
+    <h1>LIST OF DOCTORS AVAILABLE</h1>
+     <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Doctor Email</th>
+                    @* <th scope="col">Patient Name</th>
+                    <th scope="col">Patient Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col"></th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doc in Model.doctorsList)
+                {
+                    <tr>
+                        <th class="todos-column" scope="row">@doc.Id</th>
+                        <td class="todos-column">@doc.Name</td>
+                        <td class="todos-column">@doc.Email</td>
+                        @* <td class="todos-column">@req.PatientName</td>
+                        <td class="todos-column">@req.PatientEmail</td>
+                        <td class="todos-column">@req.Date</td>
+                        <td class="todos-column">@req.Time</td> *@
+
+                        @* <td class="buttons-column">
+                            <input type="submit" class="btn btn-danger" value="DeleteRequest" onClick="deleteApp(@req.reqId)" />
+                            <input type="submit" class="btn btn-primary" value="UpdateRequest" onClick="populateRequestForm(@req.reqId)" />
+                        </td> *@
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <h1>APPOINTMENTS TABLE</h1>
+    <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Doctor Email</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Patient Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    @* <th scope="col"></th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model.appointmentsList)
+                {
+                    <tr>
+                        <th class="todos-column" scope="row">@appointment.appId</th>
+                        <td class="todos-column">@appointment.DocName</td>
+                        <td class="todos-column">@appointment.DocEmail</td>
+                        <td class="todos-column">@appointment.PatientName</td>
+                        <td class="todos-column">@appointment.PatientEmail</td>
+                        <td class="todos-column">@appointment.Date</td>
+                        <td class="todos-column">@appointment.Time</td>
+
+                        <td class="buttons-column">
+                            @* <input type="submit" class="btn btn-danger" value="DeleteAppointment" onClick="deleteApp(@appointment)" /> *@
+                            @* <input type="submit" class="btn btn-primary" value="Update" onClick="populateForm(@t.Id)" /> *@
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <h1>REQUESTS TABLE</h1>
+     <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+        <table class="table">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Id</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Doctor Email</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Patient Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    @* <th scope="col"></th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var req in Model.requestsList)
+                {
+                    <tr>
+                        <th class="todos-column" scope="row">@req.reqId</th>
+                        <td class="todos-column">@req.DocName</td>
+                        <td class="todos-column">@req.DocEmail</td>
+                        <td class="todos-column">@req.PatientName</td>
+                        <td class="todos-column">@req.PatientEmail</td>
+                        <td class="todos-column">@req.Date</td>
+                        <td class="todos-column">@req.Time</td>
+
+                        <td class="buttons-column">
+
+                            @* <a href="@Url.Action("Register","", new {id=req.reqId })" class="btn btn-primary btn-lg">Update</a> *@
+                            @using (Html.BeginForm("DeleteRequest", "DeleteRequest", new { reqid= req.reqId}, FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-danger" value="DeleteRequest"/>
+                                @*<button class="btn btn-danger">DELETE</button>*@
+                            }
+                            @using (Html.BeginForm("UpdateRequest", "UpdateRequest", new { Id = req.reqId }, FormMethod.Get))
+                            {
+                                <input type="submit" class="btn btn-primary" value="UpdateRequest" />
+                                @* <button>EDIT</button> *@
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

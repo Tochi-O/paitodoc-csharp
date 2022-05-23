@@ -1,0 +1,35 @@
+@model RequestViewModel
+
+<form asp-action="EditRequest" id="form-action" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="reqId" class="form-label"></label>
+            <input asp-for="reqId" type="hidden" class="form-control" value=@ViewBag.reqId />
+            <label asp-for="DocName" class="form-label" ></label>
+            <input asp-for="DocName" class="form-control" value=@ViewBag.DocName />
+             <label asp-for="DocEmail" class="form-label"></label>
+            <input asp-for="DocEmail" class="form-control" value=@ViewBag.DocEmail />
+            <label asp-for="PatientName" class="form-label"></label>
+            <input asp-for="PatientName" class="form-control" value=@ViewBag.PatientName />
+            <label asp-for="PatientEmail" class="form-label"></label>
+            <input asp-for="PatientEmail" class="form-control" value=@ViewBag.PatientEmail />
+             <label asp-for="Date" class="form-label"></label>
+            <input asp-for="Date" class="form-control" placeholder="mm/dd/yyyy" value=@ViewBag.Date/>
+            <label asp-for="Time" class="form-label"></label>
+            <input asp-for="Time" class="form-control" placeholder="12:00pm" value=@ViewBag.Time />
+           
+
+            <span asp-validation-for="DocName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10 mt-3 mb-5">
+            <input type="submit" id="form-button" class="btn btn-success" value="Change Request" />
+        </div>
+    </div>
+ @* <div>
+        @Html.ActionLink("Already have an account, Login ", "Login", "Login", routeValues: null, htmlAttributes: new { @class = "btn-Success" })
+    </div> *@
+</form>
